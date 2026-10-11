@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+  <meta name="theme-color" content="#ff9500">
+  <meta name="description" content="A simple, fast calculator that works offline.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Calculator">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="calculator">
+    <div class="screen">
+      <div id="history" class="history"></div>
+      <div id="display" class="display">0</div>
+    </div>
+    <div class="keys">
+      <button data-action="clear" class="fn">C</button>
+      <button data-action="backspace" class="fn">⌫</button>
+      <button data-action="percent" class="fn">%</button>
+      <button data-op="/" class="op">÷</button>
+
+      <button data-num="7">7</button>
+      <button data-num="8">8</button>
+      <button data-num="9">9</button>
+      <button data-op="*" class="op">×</button>
+
+      <button data-num="4">4</button>
+      <button data-num="5">5</button>
+      <button data-num="6">6</button>
+      <button data-op="-" class="op">−</button>
+
+      <button data-num="1">1</button>
+      <button data-num="2">2</button>
+      <button data-num="3">3</button>
+      <button data-op="+" class="op">+</button>
+
+      <button data-action="sign">±</button>
+      <button data-num="0">0</button>
+      <button data-action="decimal">.</button>
+      <button data-action="equals" class="op equals">=</button>
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    // Register the service worker (needs https:// or localhost)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch((err) =>
+          console.error("Service worker registration failed:", err)
+        );
+      });
+    }
+  </script>
+</body>
+</html>
